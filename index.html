@@ -37,10 +37,10 @@ a{color:inherit}
 /* Cabeçalho */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:68px}
-.logo{display:inline-flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.logo{position:relative;display:inline-block;padding-bottom:11px;text-decoration:none;color:var(--ink)}
 .logo b{font:700 1.6rem/1 var(--display);font-variation-settings:"SOFT" 100;letter-spacing:-.01em}
 .logo b i{font-style:normal;color:var(--brand)}
-.logo svg{width:100%;height:8px;margin-top:3px}
+.logo svg{position:absolute;left:0;bottom:0;width:100%;height:8px}
 .nav{display:flex;gap:1.75rem;align-items:center}
 .nav a{text-decoration:none;font-weight:600;font-size:.95rem}
 .nav a:hover{color:var(--brand)}
@@ -456,6 +456,62 @@ html.anim .anim-done{animation:none!important}
   .card:active{transform:scale(.985)}
   .seal:active{scale:1.1}
 }
+
+/* ===== Ajustes da versão de celular ===== */
+.show-sm{display:none}
+.card .pic.draw2{aspect-ratio:auto;padding:1.5rem 1rem 1rem}
+.card .pic.draw2 svg{height:auto}
+.dw.ap .cota-t{font-size:6px}
+@media (max-width:640px){
+  .hide-sm{display:none}.show-sm{display:inline}
+  .top .wrap{min-height:60px}
+  .logo b{font-size:1.4rem}
+  .bag{padding:.4rem .8rem}
+  .hero{padding-block:1.75rem 2rem}
+  .hero .wrap{gap:1.75rem}
+  .hero h1{font-size:2.5rem;margin-top:.6rem!important}
+  .hero p.lead{font-size:1rem;margin-top:.9rem;max-width:none}
+  .hero .ctas{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:1.5rem}
+  .hero .ctas .btn{width:100%}
+  .hero-art{padding:0 10px}
+  .arch{aspect-ratio:1/1}
+  .arch img{object-position:50% 35%}
+  .seal{width:86px;height:86px;font-size:.72rem;padding:10px}
+  .seal.s1{top:-8px;right:0}
+  .seal.s1::before{inset:5px}
+  .seal small.lc{font-size:.62rem;margin-top:3px}
+  .seal small{font-size:.52rem}
+  .seal.s2{bottom:10px;left:0}
+  .checker{height:11px;background-size:11px 11px}
+  section.block{padding-block:2.25rem}
+  .sec-head{margin-bottom:1.1rem;gap:.5rem}
+  .sec-head h2,.split h2{font-size:1.75rem}
+  .sec-head p,.split p{font-size:.95rem}
+  .fact{display:grid;grid-template-columns:5.2rem 1fr;align-items:center;gap:.9rem;padding:1rem 1.1rem}
+  .fact .big{font-size:2.1rem}
+  .fact p{margin-top:0;font-size:.88rem;line-height:1.45}
+  .source{font-size:.75rem}
+  .line-grid{gap:.75rem}
+  .card .body{padding:1rem 1.1rem 1.15rem;gap:.35rem}
+  .card h3{font-size:1.3rem}
+  .card .pic.draw2{padding:1.1rem .75rem .5rem}
+  .split{gap:1.25rem}
+  .split figure{aspect-ratio:4/3}
+  .split p{margin-top:.6rem}
+  .m-grid{grid-template-columns:1fr 1fr;gap:1.25rem .9rem}
+  .m-item .v{font-size:1.9rem}
+  .m-item h3{font-size:.92rem;margin:.45rem 0 .25rem}
+  .m-item p{font-size:.82rem;line-height:1.45}
+  .m-item .ref{font-size:.68rem;margin-top:.4rem}
+  .trust{grid-template-columns:1fr;gap:1rem}
+  .t-item{display:grid;grid-template-columns:40px 1fr;column-gap:.85rem;align-items:start}
+  .t-item .ic{width:40px;height:40px;margin:0;grid-row:span 2}
+  .t-item h3{font-size:.98rem;margin:0 0 .15rem}
+  .t-item p{font-size:.86rem;line-height:1.45}
+  footer{padding-block:2.25rem 1.5rem}
+  footer .wrap{grid-template-columns:1fr 1fr;gap:1.5rem 1rem}
+  footer .wrap > :first-child{grid-column:1/-1}
+}
 </style>
 <script>
 /* Animações: só liga se houver movimento permitido e IntersectionObserver.
@@ -494,7 +550,7 @@ document.addEventListener('DOMContentLoaded',function(){if(!window.__bcMotion)d.
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Móveis multifuncionais para apartamentos compactos</p>
+        <p class="eyebrow"><span class="hide-sm">Móveis multifuncionais para apartamentos compactos</span><span class="show-sm">Para apartamentos compactos</span></p>
         <h1 style="margin-top:1rem">Móveis na <em>cota certa</em> do seu espaço.</h1>
         <p class="lead">A gente mede tudo. Você só aproveita. Peças em freijó que guardam, viram mesa e cabem na parede que você já tem.</p>
         <div class="ctas">
@@ -554,7 +610,7 @@ document.addEventListener('DOMContentLoaded',function(){if(!window.__bcMotion)d.
           </div>
         </a>
         <div class="card">
-          <div class="pic" data-draw="aparador"></div>
+          <div class="pic draw2" data-draw="aparador"></div>
           <div class="body">
             <span class="eyebrow">Aparador + mesa para 4</span>
             <h3>Aparador-mesa</h3>
@@ -563,7 +619,7 @@ document.addEventListener('DOMContentLoaded',function(){if(!window.__bcMotion)d.
           </div>
         </div>
         <div class="card">
-          <div class="pic" data-draw="banco"></div>
+          <div class="pic draw2" data-draw="banco"></div>
           <div class="body">
             <span class="eyebrow">Assento + baú</span>
             <h3>Banco-baú</h3>
@@ -975,24 +1031,56 @@ var IMG={"arco":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUE
       '</svg>';
     return s;
   }
+  function lbl(x,y,t,fs){ return '<text class="note" x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:'+(fs||4.2)+'px;letter-spacing:.3px">'+t+'</text>'; }
+  function floor(x1,x2,y){ return '<path d="M'+x1+' '+y+'H'+x2+'" stroke="var(--line)" stroke-width=".6"/>'; }
   function aparador(){
-    return '<svg class="dw" viewBox="-4 -4 128 86" role="img" aria-label="Aparador-mesa fechado"><title>Aparador-mesa</title>'+
-      '<rect class="wood" x="0" y="0" width="120" height="2.5"/>'+
-      '<rect class="wood" x="1" y="2.5" width="118" height="36"/>'+
-      '<rect class="wood" x="5" y="38.5" width="110" height="30"/>'+
-      '<rect class="void" x="8" y="45" width="32" height="20"/><rect class="void" x="44" y="45" width="32" height="20"/><rect class="void" x="80" y="45" width="32" height="20"/>'+
-      '<rect x="9" y="68.5" width="102" height="6.5" fill="var(--ink)"/>'+
-      cotaH(0,120,80.5,'120') +
-      '</svg>';
+    // perfil (profundidade x altura), em cm. Piso em y=75.
+    var c = '', o = 112;
+    function corpo(){
+      return '<rect class="wood" x="0" y="0" width="35" height="2.5"/>'+
+        '<rect class="wood" x="5" y="2.5" width="25" height="68.5"/>'+
+        '<rect class="void" x="7" y="46" width="21" height="22"/>'+
+        '<rect class="void" x="7" y="10" width="21" height="14"/>'+
+        '<rect x="8" y="71" width="19" height="4" fill="#3B1520" stroke="var(--wood-edge)" stroke-width=".2"/>';
+    }
+    // FECHADO: tampo de 35 cm e abas de 40 cm penduradas dos dois lados
+    c += corpo();
+    c += '<rect class="wood" x="-1.8" y="1" width="1.8" height="40" rx=".4"/>';
+    c += '<rect class="wood" x="35" y="1" width="1.8" height="40" rx=".4"/>';
+    c += floor(-10,46,75) + cotaV(-6,0,75,'75','l') + cotaH(0,35,81,'35') + lbl(17.5,92,'FECHADO',6);
+    // ABERTO: abas na horizontal, apoiadas nos braços giratórios
+    c += '<g transform="translate('+o+',0)">';
+    c += '<rect class="wood" x="-40" y="0" width="40" height="1.8"/><rect class="wood" x="35" y="0" width="40" height="1.8"/>';
+    c += corpo();
+    c += '<path d="M5 4.2H-27M30 4.2H62" stroke="var(--wood-edge)" stroke-width="1.6" stroke-linecap="round"/>';
+    c += floor(-48,83,75) + cotaH(-40,75,81,'115') + cotaH(-40,5,-6,'45 p/ joelhos') + lbl(17.5,92,'ABERTO · 4 LUGARES',6);
+    c += '</g>';
+    return '<svg class="dw ap" viewBox="-18 -16 222 112" role="img" aria-label="Aparador-mesa em perfil: fechado com 35 cm de profundidade e aberto com 115 cm"><title>Aparador-mesa fechado e aberto</title>'+c+'</svg>';
   }
   function banco(){
-    return '<svg class="dw" viewBox="-4 -12 108 66" role="img" aria-label="Banco-baú"><title>Banco-baú</title>'+
-      '<rect x="0" y="-5" width="100" height="5" rx="2.5" fill="var(--sage)"/>'+
-      '<rect class="wood" x="-1.5" y="0" width="103" height="1.8"/>'+
-      '<rect class="wood" x="0" y="1.8" width="100" height="32"/>'+
-      '<rect x="8" y="33.8" width="84" height="6.2" fill="var(--ink)"/>'+
-      cotaH(0,100,46,'100') +
-      '</svg>';
+    // perfil (profundidade x altura), em cm. Piso em y=45.
+    var c = '', o = 74;
+    function base(){
+      return '<rect class="wood" x="0" y="7" width="42" height="30"/>'+
+        '<rect x="8" y="37" width="34" height="8" fill="#3B1520" stroke="var(--wood-edge)" stroke-width=".2"/>';
+    }
+    // FECHADO: assento com almofada
+    c += base();
+    c += '<rect class="wood" x="-1.5" y="5" width="43.5" height="2"/>';
+    c += '<rect x="0" y="0" width="42" height="5" rx="2.2" fill="var(--sage)"/>';
+    c += floor(-8,50,45) + cotaV(-6,0,45,'45','l') + cotaH(0,42,51,'42') + lbl(21,60,'FECHADO');
+    // ABERTO: tampa a 90°, travada pelo freio; interior com divisória
+    c += '<g transform="translate('+o+',0)">';
+    c += base();
+    c += '<rect class="void" x="2" y="7" width="38" height="28"/>';
+    c += '<rect class="wood" x="20" y="9" width="1.8" height="26"/>';
+    c += '<rect x="5" y="22" width="12" height="13" rx="1" fill="var(--rose)"/><rect x="24" y="27" width="13" height="8" rx="1" fill="var(--apricot)"/>';
+    c += '<rect class="wood" x="42" y="-31.5" width="2" height="38.5"/>';
+    c += '<rect x="44" y="-30" width="5" height="35" rx="2.2" fill="var(--sage)"/>';
+    c += '<path d="M39 14L42.5 -6" stroke="var(--ink-soft)" stroke-width=".8" stroke-linecap="round"/>';
+    c += floor(-8,58,45) + lbl(21,60,'ABERTO · TAMPA COM FREIO');
+    c += '</g>';
+    return '<svg class="dw" viewBox="-16 -36 158 100" role="img" aria-label="Banco-baú em perfil: fechado como assento de 45 cm e aberto como baú, com a tampa travada por freio"><title>Banco-baú fechado e aberto</title>'+c+'</svg>';
   }
   function planta(){
     return '<svg class="dw" viewBox="-14 -8 118 100" role="img" aria-label="Vista superior com o tampo aberto"><title>Vista superior</title>'+
